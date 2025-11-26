@@ -17,6 +17,14 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+    
+    afterEvaluate {
+        if (project.name == "device_info_plus") {
+            android {
+                namespace = "dev.fluttercommunity.plus.device_info"
+            }
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {

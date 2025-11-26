@@ -1,14 +1,12 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'appwrite_config.dart';
 
 class NoteService {
-  final Client _client = getClient();
   late final Databases _databases;
 
   NoteService() {
-    _databases = Databases(_client);
+    _databases = Databases(AppwriteConfig.client);
   }
 
   // Get all notes, potentially filtered by userId
@@ -27,8 +25,8 @@ class NoteService {
 
       // Fetch documents from the database
       final response = await _databases.listDocuments(
-        databaseId: dotenv.env['APPWRITE_DATABASE_ID'] ?? '',
-        collectionId: dotenv.env['APPWRITE_COLLECTION_ID'] ?? '',
+        databaseId: AppwriteConfig.databaseId,
+        collectionId: AppwriteConfig.collectionId,
         queries: queries,
       );
 
@@ -51,8 +49,8 @@ class NoteService {
 
       // Create a document in the database
       final response = await _databases.createDocument(
-        databaseId: dotenv.env['APPWRITE_DATABASE_ID'] ?? '',
-        collectionId: dotenv.env['APPWRITE_COLLECTION_ID'] ?? '',
+        databaseId: AppwriteConfig.databaseId,
+        collectionId: AppwriteConfig.collectionId,
         documentId: ID.unique(),
         data: noteData,
       );
@@ -68,8 +66,8 @@ class NoteService {
   Future<void> deleteNote(String noteId) async {
     try {
       await _databases.deleteDocument(
-        databaseId: dotenv.env['APPWRITE_DATABASE_ID'] ?? '',
-        collectionId: dotenv.env['APPWRITE_COLLECTION_ID'] ?? '',
+        databaseId: AppwriteConfig.databaseId,
+        collectionId: AppwriteConfig.collectionId,
         documentId: noteId,
       );
     } catch (e) {
@@ -87,8 +85,8 @@ class NoteService {
       };
 
       final response = await _databases.updateDocument(
-        databaseId: dotenv.env['APPWRITE_DATABASE_ID'] ?? '',
-        collectionId: dotenv.env['APPWRITE_COLLECTION_ID'] ?? '',
+        databaseId: AppwriteConfig.databaseId,
+        collectionId: AppwriteConfig.collectionId,
         documentId: noteId,
         data: noteData,
       );

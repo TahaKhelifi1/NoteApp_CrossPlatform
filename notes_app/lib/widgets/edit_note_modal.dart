@@ -7,10 +7,10 @@ class EditNoteModal extends StatefulWidget {
   final Function(Document) onNoteUpdated;
 
   const EditNoteModal({
-    Key? key,
+    super.key,
     required this.note,
     required this.onNoteUpdated,
-  }) : super(key: key);
+  });
 
   @override
   _EditNoteModalState createState() => _EditNoteModalState();

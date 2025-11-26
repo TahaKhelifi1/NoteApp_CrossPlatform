@@ -5,9 +5,9 @@ class AddNoteModal extends StatefulWidget {
   final Function(Map<String, dynamic>) onNoteAdded;
 
   const AddNoteModal({
-    Key? key,
+    super.key,
     required this.onNoteAdded,
-  }) : super(key: key);
+  });
 
   @override
   _AddNoteModalState createState() => _AddNoteModalState();

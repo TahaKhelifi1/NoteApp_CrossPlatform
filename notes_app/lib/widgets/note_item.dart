@@ -9,11 +9,11 @@ class NoteItem extends StatefulWidget {
   final Function(Document)? onNoteUpdated;
 
   const NoteItem({
-    Key? key,
+    super.key,
     required this.note,
     this.onNoteDeleted,
     this.onNoteUpdated,
-  }) : super(key: key);
+  });
 
   @override
   _NoteItemState createState() => _NoteItemState();

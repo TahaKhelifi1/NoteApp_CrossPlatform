@@ -26,7 +26,6 @@ class DatabaseService {
       return response.documents;
     } catch (e) {
       // Log and rethrow any errors
-      print('Error listing documents: $e');
       rethrow;
     }
   }

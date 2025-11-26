@@ -5,7 +5,7 @@ import '../widgets/note_item.dart';
 import '../widgets/add_note_modal.dart';
 
 class NotesScreenAppwrite extends StatefulWidget {
-  const NotesScreenAppwrite({Key? key}) : super(key: key);
+  const NotesScreenAppwrite({super.key});
 
   @override
   _NotesScreenAppwriteState createState() => _NotesScreenAppwriteState();
